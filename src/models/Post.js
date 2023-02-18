@@ -19,9 +19,29 @@ export default class Post extends Model {
     };
   }
 
-  static FetchAll() {
-    return this.api().get("/posts", {
-      // dataKey: 'data'
+  static FetchAll(
+    { page = 1, limit = 15 },
+    query = {},
+    relationships = [],
+    view = "Grid view"
+  ) {
+    page;
+    relationships;
+    return this.api().get("/Table%201", {
+      params: {
+        ...{
+          // page: page,
+          maxRecords: limit,
+          view: view,
+          // with: relationships,
+        },
+        ...(query !== {} ? query : {}),
+      },
+      dataTransformer: ({ data }) => {
+        return data.records.map((entity) => {
+          return { ...entity, ...entity.fields };
+        });
+      },
     });
   }
 }

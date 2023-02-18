@@ -20,7 +20,7 @@ export default {
     HomePlans,
   },
   mounted() {
-    Post.FetchAll();
+    Post.FetchAll({});
   },
 };
 </script>

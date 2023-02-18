@@ -10,8 +10,8 @@ Vue.use(Vuex);
 
 VuexORM.use(VuexORMAxios, {
   axios,
-  headers: { "X-Requested-With": "XMLHttpRequest" },
-  baseURL: "https://jsonplaceholder.typicode.com",
+  headers: { Authorization: "Bearer " + process.env.VUE_APP_API_KEY },
+  baseURL: "https://api.airtable.com/v0/appAcpNBygiSryvEo",
 });
 
 // Create a new instance of Database.
